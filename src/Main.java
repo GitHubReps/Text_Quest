@@ -1,3 +1,5 @@
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -10,9 +12,14 @@ public class Main {
         short weight = 30;
         String userAction = "";
         String subAction = "";
+        final short maxRespect = 100;
 
         while ((!userAction.equals("exit")) && (health > 0) && (hole > 0) && (weight > 0)
                 && (respect > 0)) {
+            if (respect >= maxRespect) {
+                System.out.printf("You won! Your respect is %d! Game is now over.", respect);
+                break;
+            }
             // clear term
             for (int i = 0; i < 10; i++) {
                 System.out.println("");
@@ -90,6 +97,7 @@ public class Main {
                             }
                             else {
                                 System.out.println("You won!");
+                                respect += ((1 - victoryChance) * maxRespect);
                             }
                             break;
                         case "2":
@@ -99,6 +107,7 @@ public class Main {
                             }
                             else {
                                 System.out.println("You won!");
+                                respect += ((1 - victoryChance) * maxRespect);
                             }
                             break;
                         case "3":
@@ -108,11 +117,35 @@ public class Main {
                             }
                             else {
                                 System.out.println("You won!");
+                                respect += ((1 - victoryChance) * maxRespect);
                             }
                             break;
                     }
                     break;
+      /* Need to troubleshoot time diff
+                    case "4":
+
+                        Date startUserAction = new Date();
+                        Date endUserAction = new Date();
+                        System.out.println("You have 5 seconds to input 5");
+                        long start = startUserAction.getTime();
+                        subAction = in.nextLine();
+                        if (!subAction.equals(null)) {
+                            long end = endUserAction.getTime();
+                            if ( (end - start) > 5000) {
+                                System.out.println("Not fast enough");
+                            }
+                            else  {
+                                System.out.println("Got action in less than 5 sec");
+                            }
+                        }
+                        break;*/
             }
+            // New day stats changer
+            hole -= 2;
+            health += 20;
+            respect -= 2;
+            weight -= 5;
         }
     }
 }
