@@ -122,15 +122,14 @@ public class Main {
                             break;
                     }
                     break;
-      /* Need to troubleshoot time diff
+                    // Option for advanced fight mode, more user action required
                     case "4":
-
-                        Date startUserAction = new Date();
-                        Date endUserAction = new Date();
                         System.out.println("You have 5 seconds to input 5");
+                        Date startUserAction = new Date();
                         long start = startUserAction.getTime();
                         subAction = in.nextLine();
                         if (!subAction.equals(null)) {
+                            Date endUserAction = new Date();
                             long end = endUserAction.getTime();
                             if ( (end - start) > 5000) {
                                 System.out.println("Not fast enough");
@@ -139,7 +138,7 @@ public class Main {
                                 System.out.println("Got action in less than 5 sec");
                             }
                         }
-                        break;*/
+                        break;
             }
             // New day stats changer
             hole -= 2;
