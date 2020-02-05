@@ -35,7 +35,9 @@ public class Main {
             System.out.printf("Respect: %d\n", respect);
             // read action
             System.out.println("Choose what to do today: ");
-            System.out.println("Press 1 to dig a hole, press 2 to eat, press 3 to fight \n");
+            System.out.println("#######");
+            System.out.println("# 1 #");
+            System.out.println("#######");
             Scanner in = new Scanner(System.in);
             userAction = in.nextLine();
             switch (userAction) {
@@ -124,7 +126,20 @@ public class Main {
                     break;
                     // Option for advanced fight mode, more user action required
                     case "4":
-                        System.out.println("You have 5 seconds to input 5");
+                    // Check entry points!
+
+                        System.out.println("###############################################################");
+                        System.out.println("#                                                             #");
+                        System.out.println("#                                                             #");
+                        System.out.println("#                                                             #");
+                        System.out.println("#                     YOU ARE UNDER ATTACK                    #");
+                        System.out.println("#                    ENEMY HORDE APPROACHES                   #");
+                        System.out.println("#           YOU HAVE 5 SECONDS TO DODGE ENEMY'S ATTACK        #");
+                        System.out.println("#                                                             #");
+                        System.out.println("#                                                             #");
+                        System.out.println("#                                                             #");
+                        System.out.println("#                                                             #");
+                        System.out.println("###############################################################");
                         Date startUserAction = new Date();
                         long start = startUserAction.getTime();
                         subAction = in.nextLine();
@@ -132,10 +147,64 @@ public class Main {
                             Date endUserAction = new Date();
                             long end = endUserAction.getTime();
                             if ( (end - start) > 5000) {
-                                System.out.println("Not fast enough");
+                                System.out.println("######################################################");
+                                System.out.println("                     YOU ARE DEAD"                     );
+                                System.out.println("# @@@@@                                        @@@@@ #");
+                                System.out.println("#@@@@@@@                                      @@@@@@@#");
+                                System.out.println("# @@@@@@@@       @@@@@@@@@@@@@@@@@@@        @@@@@@@@ #");
+                                System.out.println("#     @@@@@     @@@@@@@@@@@@@@@@@@@@@     @@@@@      #");
+                                System.out.println("#       @@@@@  @@@@@@@@@@@@@@@@@@@@@@@  @@@@@        #");
+                                System.out.println("#         @@  @@@@@@@@@@@@@@@@@@@@@@@@@  @@          #");
+                                System.out.println("#            @@@@@@@    @@@@@@    @@@@@@             #");
+                                System.out.println("#            @@@@@@      @@@@      @@@@@             #");
+                                System.out.println("#            @@@@@@      @@@@      @@@@@             #");
+                                System.out.println("#             @@@@@@    @@@@@@    @@@@@              #");
+                                System.out.println("#              @@@@@@@@@@@  @@@@@@@@@@               #");
+                                System.out.println("#               @@@@@@@@@@  @@@@@@@@@                #");
+                                System.out.println("#           @@   @@@@@@@@@@@@@@@@@   @@              #");
+                                System.out.println("#           @@@@  @@@@ @ @ @ @ @@@@  @@@@            #");
+                                System.out.println("#          @@@@@   @@@ @ @ @ @ @@@   @@@@@           #");
+                                System.out.println("#        @@@@@      @@@@@@@@@@@@@      @@@@@         #");
+                                System.out.println("#      @@@@          @@@@@@@@@@@          @@@@       #");
+                                System.out.println("#   @@@@@              @@@@@@@              @@@@@    #");
+                                System.out.println("#  @@@@@@@                                 @@@@@@@   #");
+                                System.out.println("#   @@@@@                                   @@@@@    #");
+                                System.out.println("######################################################");
+                                health -= 1000;
                             }
                             else  {
-                                System.out.println("Got action in less than 5 sec");
+                                System.out.println("You evade an attack!");
+                                int enemyHealth = 100;
+                                if (enemyHealth > 0) {
+                                    System.out.println("Attack an enemy! Press 1 to hit fast (low damage), press 2 to perform power strike (high damage)");
+                                    String attackEnemy = "";
+                                    attackEnemy = in.nextLine();
+                                    double chanceToPerformCriticalHit = new Random().nextDouble();
+                                    switch (attackEnemy) {
+                                        case "1":
+                                            enemyHealth -= 10;
+                                            if (chanceToPerformCriticalHit < 0.5) {
+                                                System.out.println("You hit for 10 damage");
+                                                break;
+                                            }
+                                            else {
+                                                enemyHealth -= 1000;
+                                                System.out.println("You performed a critical hit!");
+                                            }
+                                            break;
+                                        case "2":
+                                            enemyHealth -= 20;
+                                            if (chanceToPerformCriticalHit < 0.5) {
+                                                System.out.println("You hit for 20 damage");
+                                            }
+                                            else if (chanceToPerformCriticalHit >= 0.5) {
+                                                enemyHealth -= 1000;
+                                                System.out.println("You performed a critical hit!");
+                                            }
+                                            break;
+                                    }
+
+                                }
                             }
                         }
                         break;
