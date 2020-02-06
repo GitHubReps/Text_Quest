@@ -163,6 +163,7 @@ public class Main {
                             System.out.println("#                                                             #");
                             System.out.println("#                                                             #");
                             System.out.println("###############################################################");
+                            System.out.println("Press 1 to dodge, press 2 to parry");
                             defenceOption = in.nextLine();
                             if (defenceOption.equals(evadeAttack)) {
                                 System.out.println("###############################################################");
@@ -186,12 +187,13 @@ public class Main {
                                 System.out.println("#                                                             #");
                                 System.out.println("#                                                             #");
                                 System.out.println("###############################################################");
+                                System.out.println("press 1 to attack");
                                 attackOption = in.nextLine();
                                 if (attackOption.equals(performAttack)) {
                                     double chanceToPerformCriticalHit = new Random().nextDouble();
                                     if (chanceToPerformCriticalHit < 0.5) {
                                         enemyHealth -= basicAttackValue;
-                                        System.out.printf("You hit for %d damage",basicAttackValue);
+                                        System.out.printf("You hit for %d damage", basicAttackValue);
                                         break;
                                     }
                                     else if (chanceToPerformCriticalHit >= 0.5) {
@@ -202,6 +204,7 @@ public class Main {
                                 }
                                 else if (!attackOption.equals(performAttack)) {
                                     System.out.println("You've missed!");
+                                    break;
                                 }
                             }
                             else if (defenceOption.equals(parryAttack)) {
@@ -235,17 +238,19 @@ public class Main {
                                 System.out.println("#                                                             #");
                                 System.out.println("#                                                             #");
                                 System.out.println("###############################################################");
+                                System.out.println("press 1 to attack");
                                 attackOption = in.nextLine();
                                 if (attackOption.equals(performAttack)) {
                                     double chanceToPerformCriticalHit = new Random().nextDouble();
                                     if (chanceToPerformCriticalHit < 0.5) {
                                         enemyHealth -= basicAttackValue;
-                                        System.out.printf("You hit for %d damage",basicAttackValue);
+                                        System.out.printf("You hit for %d damage\n",basicAttackValue);
                                         break;
                                     }
                                     else if (chanceToPerformCriticalHit >= 0.5) {
                                         enemyHealth -= criticalAttackValue;;
-                                        System.out.printf("You hit for %d damage", criticalAttackValue);
+                                        System.out.printf("You hit for %d damage\n", criticalAttackValue);
+                                        break;
                                     }
                                 }
                             }
@@ -304,7 +309,6 @@ public class Main {
                                 respect += 1000;
                                 break;
                             }
-                        return;
                     }
             }
             // New day stats changer
