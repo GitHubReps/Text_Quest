@@ -127,7 +127,7 @@ public class Main {
                     case "4":
                     // Check entry points!
                         short enemyHealth = 100;
-                        final short basicAttackValue = 10;
+                        final short basicAttackValue = 100;
                         final short criticalAttackValue = (basicAttackValue * 2);
                         String evadeAttack = "1";
                         String parryAttack = "2";
@@ -144,13 +144,11 @@ public class Main {
                                     double chanceToPerformCriticalHit = new Random().nextDouble();
                                     if (chanceToPerformCriticalHit < 0.5) {
                                         enemyHealth -= basicAttackValue;
-                                        System.out.printf("You hit for %d damage", basicAttackValue);
-                                        break;
+                                        System.out.printf("You hit for %d damage\n", basicAttackValue);
                                     }
                                     else if (chanceToPerformCriticalHit >= 0.5) {
                                         enemyHealth -= criticalAttackValue;;
-                                        System.out.printf("You hit for %d damage", criticalAttackValue);
-                                        break;
+                                        System.out.printf("You hit for %d damage\n", criticalAttackValue);
                                     }
                                 }
                                 else if (!attackOption.equals(performAttack)) {
@@ -166,12 +164,11 @@ public class Main {
                                     double chanceToPerformCriticalHit = new Random().nextDouble();
                                     if (chanceToPerformCriticalHit < 0.5) {
                                         enemyHealth -= basicAttackValue;
-                                        System.out.printf("You hit for %d damage",basicAttackValue);
-                                        break;
+                                        System.out.printf("You hit for %d damage\n",basicAttackValue);
                                     }
                                     else if (chanceToPerformCriticalHit >= 0.5) {
                                         enemyHealth -= criticalAttackValue;;
-                                        System.out.printf("You hit for %d damage", criticalAttackValue);
+                                        System.out.printf("You hit for %d damage\n", criticalAttackValue);
                                     }
                                 }
                             }
