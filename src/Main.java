@@ -2,6 +2,7 @@ import java.time.ZoneId;
 import java.util.Date;
 import java.util.Random;
 import java.util.Scanner;
+import methods.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -134,60 +135,10 @@ public class Main {
                         String attackOption = "";
                         String performAttack = "1";
                         while ( (enemyHealth > 0) && (health > 0) ) {
-                            System.out.println("###############################################################");
-                            System.out.println("#                                                             #");
-                            System.out.println("#                                                             #");
-                            System.out.println("#                 YOUR ENEMY CHARGES FOR AN ATTACK            #");
-                            System.out.println("#           YOU HAVE 5 SECONDS TO DODGE ENEMY'S ATTACK        #");
-                            System.out.println("#                    OR YOU ARE GOING TO DIE                  #");
-                            System.out.println("#                                                             #");
-                            System.out.println("#                                                             #");
-                            System.out.println("###############################################################");
-                            System.out.println("#                                                             #");
-                            System.out.println("###############################################################");
-                            System.out.println("#                                                             #");
-                            System.out.println("#                                                             #");
-                            System.out.println("#       #################              #################      #");
-                            System.out.println("#       #     PRESS     #              #     PRESS     #      #");
-                            System.out.println("#       #               #              #               #      #");
-                            System.out.println("#       #       11      #              #      2222     #      #");
-                            System.out.println("#       #    11 11      #              #    22    22   #      #");
-                            System.out.println("#       #  11   11      #              #   22     22   #      #");
-                            System.out.println("#       #       11      #              #        22     #      #");
-                            System.out.println("#       #       11      #              #     22        #      #");
-                            System.out.println("#       #       11      #              #   222222222   #      #");
-                            System.out.println("#       #               #              #               #      #");
-                            System.out.println("#       #    TO DODGE   #              #    TO PARRY   #      #");
-                            System.out.println("#       #################              #################      #");
-                            System.out.println("#                                                             #");
-                            System.out.println("#                                                             #");
-                            System.out.println("#                                                             #");
-                            System.out.println("###############################################################");
-                            System.out.println("Press 1 to dodge, press 2 to parry");
+                            Print.printStartingBattleMessage();
                             defenceOption = in.nextLine();
                             if (defenceOption.equals(evadeAttack)) {
-                                System.out.println("###############################################################");
-                                System.out.println("#                                                             #");
-                                System.out.println("#                                                             #");
-                                System.out.println("#                      YOUR ENEMY MISSED                      #");
-                                System.out.println("#                 YOU HAVE 3 SECONDS TO ATTACK                #");
-                                System.out.println("#                                                             #");
-                                System.out.println("#                     #################                       #");
-                                System.out.println("#                     #     PRESS     #                       #");
-                                System.out.println("#                     #               #                       #");
-                                System.out.println("#                     #       11      #                       #");
-                                System.out.println("#                     #    11 11      #                       #");
-                                System.out.println("#                     #  11   11      #                       #");
-                                System.out.println("#                     #       11      #                       #");
-                                System.out.println("#                     #       11      #                       #");
-                                System.out.println("#                     #       11      #                       #");
-                                System.out.println("#                     #               #                       #");
-                                System.out.println("#                     #   TO ATTACK   #                       #");
-                                System.out.println("#                     #################                       #");
-                                System.out.println("#                                                             #");
-                                System.out.println("#                                                             #");
-                                System.out.println("###############################################################");
-                                System.out.println("press 1 to attack");
+                                Print.printEvadeAttackMessage();
                                 attackOption = in.nextLine();
                                 if (attackOption.equals(performAttack)) {
                                     double chanceToPerformCriticalHit = new Random().nextDouble();
@@ -204,111 +155,38 @@ public class Main {
                                 }
                                 else if (!attackOption.equals(performAttack)) {
                                     System.out.println("You've missed!");
-                                    break;
                                 }
                             }
                             else if (defenceOption.equals(parryAttack)) {
                                 health /= 2;
                                 health -= basicAttackValue;
-                                System.out.println("###############################################################");
-                                System.out.println("#                                                             #");
-                                System.out.println("#                                                             #");
-                                System.out.println("#                      YOU PARRY AN ATTACK                    #");
-                                System.out.println("#             YOU HAVE LOST 50% OF YOUR HEALTH POINTS         #");
-                                System.out.println("#    AND RECEIVED ADDITIONAL 10 DAMAGE TO YOUR HEALTH POINTS  #");
-                                System.out.println("#                                                             #");
-                                System.out.println("#                                                             #");
-                                System.out.println("###############################################################");
-                                System.out.println("#                                                             #");
-                                System.out.println("#                                                             #");
-                                System.out.println("#                 YOU HAVE 3 SECONDS TO ATTACK                #");
-                                System.out.println("#                                                             #");
-                                System.out.println("#                     #################                       #");
-                                System.out.println("#                     #     PRESS     #                       #");
-                                System.out.println("#                     #               #                       #");
-                                System.out.println("#                     #       11      #                       #");
-                                System.out.println("#                     #    11 11      #                       #");
-                                System.out.println("#                     #  11   11      #                       #");
-                                System.out.println("#                     #       11      #                       #");
-                                System.out.println("#                     #       11      #                       #");
-                                System.out.println("#                     #       11      #                       #");
-                                System.out.println("#                     #               #                       #");
-                                System.out.println("#                     #   TO ATTACK   #                       #");
-                                System.out.println("#                     #################                       #");
-                                System.out.println("#                                                             #");
-                                System.out.println("#                                                             #");
-                                System.out.println("###############################################################");
-                                System.out.println("press 1 to attack");
+                                Print.printParryAttackMessage();
                                 attackOption = in.nextLine();
                                 if (attackOption.equals(performAttack)) {
                                     double chanceToPerformCriticalHit = new Random().nextDouble();
                                     if (chanceToPerformCriticalHit < 0.5) {
                                         enemyHealth -= basicAttackValue;
-                                        System.out.printf("You hit for %d damage\n",basicAttackValue);
+                                        System.out.printf("You hit for %d damage",basicAttackValue);
                                         break;
                                     }
                                     else if (chanceToPerformCriticalHit >= 0.5) {
                                         enemyHealth -= criticalAttackValue;;
-                                        System.out.printf("You hit for %d damage\n", criticalAttackValue);
-                                        break;
+                                        System.out.printf("You hit for %d damage", criticalAttackValue);
                                     }
                                 }
                             }
                         }
                         if ( health <= 0) {
-                            System.out.println("######################################################");
-                            System.out.println("#                     YOU ARE DEAD                   #");
-                            System.out.println("# @@@@@                                        @@@@@ #");
-                            System.out.println("#@@@@@@@                                      @@@@@@@#");
-                            System.out.println("# @@@@@@@@       @@@@@@@@@@@@@@@@@@@        @@@@@@@@ #");
-                            System.out.println("#     @@@@@     @@@@@@@@@@@@@@@@@@@@@     @@@@@      #");
-                            System.out.println("#       @@@@@  @@@@@@@@@@@@@@@@@@@@@@@  @@@@@        #");
-                            System.out.println("#         @@  @@@@@@@@@@@@@@@@@@@@@@@@@  @@          #");
-                            System.out.println("#            @@@@@@@    @@@@@@    @@@@@@             #");
-                            System.out.println("#            @@@@@@      @@@@      @@@@@             #");
-                            System.out.println("#            @@@@@@      @@@@      @@@@@             #");
-                            System.out.println("#             @@@@@@    @@@@@@    @@@@@              #");
-                            System.out.println("#              @@@@@@@@@@@  @@@@@@@@@@               #");
-                            System.out.println("#               @@@@@@@@@@  @@@@@@@@@                #");
-                            System.out.println("#           @@   @@@@@@@@@@@@@@@@@   @@              #");
-                            System.out.println("#           @@@@  @@@@ @ @ @ @ @@@@  @@@@            #");
-                            System.out.println("#          @@@@@   @@@ @ @ @ @ @@@   @@@@@           #");
-                            System.out.println("#        @@@@@      @@@@@@@@@@@@@      @@@@@         #");
-                            System.out.println("#      @@@@          @@@@@@@@@@@          @@@@       #");
-                            System.out.println("#   @@@@@              @@@@@@@              @@@@@    #");
-                            System.out.println("#  @@@@@@@                                 @@@@@@@   #");
-                            System.out.println("#   @@@@@                                   @@@@@    #");
-                            System.out.println("######################################################");
+                            Print.printDeathMessage();
                             health -= 1000;
                             break;
                         }
                         else if (enemyHealth <= 0) {
-                                System.out.println("######################################################");
-                                System.out.println("#              YOUR ENEMY WAS DEFEATED!              #");
-                                System.out.println("# @@@@@                                        @@@@@ #");
-                                System.out.println("#@@@@@@@                                      @@@@@@@#");
-                                System.out.println("# @@@@@@@@       @@@@@@@@@@@@@@@@@@@        @@@@@@@@ #");
-                                System.out.println("#     @@@@@     @@@@@@@@@@@@@@@@@@@@@     @@@@@      #");
-                                System.out.println("#       @@@@@  @@@@@@@@@@@@@@@@@@@@@@@  @@@@@        #");
-                                System.out.println("#         @@  @@@@@@@@@@@@@@@@@@@@@@@@@  @@          #");
-                                System.out.println("#            @@@@@@@    @@@@@@    @@@@@@             #");
-                                System.out.println("#            @@@@@@      @@@@      @@@@@             #");
-                                System.out.println("#            @@@@@@      @@@@      @@@@@             #");
-                                System.out.println("#             @@@@@@    @@@@@@    @@@@@              #");
-                                System.out.println("#              @@@@@@@@@@@  @@@@@@@@@@               #");
-                                System.out.println("#               @@@@@@@@@@  @@@@@@@@@                #");
-                                System.out.println("#           @@   @@@@@@@@@@@@@@@@@   @@              #");
-                                System.out.println("#           @@@@  @@@@ @ @ @ @ @@@@  @@@@            #");
-                                System.out.println("#          @@@@@   @@@ @ @ @ @ @@@   @@@@@           #");
-                                System.out.println("#        @@@@@      @@@@@@@@@@@@@      @@@@@         #");
-                                System.out.println("#      @@@@          @@@@@@@@@@@          @@@@       #");
-                                System.out.println("#   @@@@@              @@@@@@@              @@@@@    #");
-                                System.out.println("#  @@@@@@@                                 @@@@@@@   #");
-                                System.out.println("#   @@@@@                                   @@@@@    #");
-                                System.out.println("######################################################");
+                                Print.printVictoryMessage();
                                 respect += 1000;
                                 break;
                             }
+                        return;
                     }
             }
             // New day stats changer
