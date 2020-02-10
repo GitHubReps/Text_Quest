@@ -127,7 +127,7 @@ public class Main {
                     case "4":
                     // Check entry points!
                         short enemyHealth = 100;
-                        final short basicAttackValue = 100;
+                        final short basicAttackValue = 30;
                         final short criticalAttackValue = (basicAttackValue * 2);
                         String evadeAttack = "1";
                         String parryAttack = "2";
@@ -176,14 +176,12 @@ public class Main {
                         if ( health <= 0) {
                             Print.printDeathMessage();
                             health -= 1000;
-                            break;
                         }
                         else if (enemyHealth <= 0) {
                                 Print.printVictoryMessage();
                                 respect += 1000;
-                                break;
                             }
-                        return;
+                        break;
                     }
             }
             // New day stats changer
